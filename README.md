@@ -4,7 +4,7 @@
 
 HTML page with url query inputbox wrapper over wappalyzer api and whois service usage
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.png?raw=true)
+![alt text](https://github.com/Ferlony/GraphicsWappalyzerWrapper/blob/main/image.png?raw=true)
 
 # Installation
 
