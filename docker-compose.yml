@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  wap_api:
+    image: wap_api
+    build:
+      context: ./wappalyzer-api/
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+
+  lab_app:
+    image: lab_app
+    environment:
+      - wapHost=192.168.1.43 
+    build: 
+      context: ./src/
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LAB 10</title>
+    </head>
+
+    
+    <body style="background-color: #353839; color: white;">
+        <script>
+
+            const url = window.location.href;
+            console.log(url);
+
+            async function reqButton() {
+                var reqUrl = document.getElementById("inputData").value;
+                var responseStatus = await postForSite({'reqUrl': reqUrl});
+                var responseStatusParsed = JSON.parse(responseStatus);
+                var whoisRes = responseStatusParsed["whois"];
+                var wapRes = responseStatusParsed["wap"];
+                console.log(responseStatus);
+                console.log(whoisRes.toString());
+                console.log(wapRes.toString());
+                document.getElementById("responseStatus").innerHTML = responseStatus.toString();
+                document.getElementById("whoisStatus").innerHTML = whoisRes.toString();
+                document.getElementById("wapStatus").innerHTML = wapRes.toString();
+            }
+
+
+            async function postForSite(reqUrl) {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(reqUrl)
+                }).then(response => response.json())
+
+                return JSON.stringify(response);
+            }
+
+            function clearButton() {
+              document.getElementById("responseStatus").innerHTML = "";
+              document.getElementById("whoisStatus").innerHTML = "";
+              document.getElementById("wapStatus").innerHTML = "";
+              document.getElementById("inputData").value = "";
+            }
+
+        </script>
+
+        <div style="text-align: center; padding-top: 50px;">
+            <h1>Enter domain or ip</h1>
+            <span> 
+              <input id="inputData"/> <button onclick="reqButton()" style="padding-right: 10px;">Submit</button>
+              <button onclick="clearButton()">Clear data</button>
+            </span>
+            <h2>Response status:</h2>
+            <p id="responseStatus"></p>
+            <h2>Whois status:</h2>
+            <p id="whoisStatus"></p>
+            <h2>Wap status:</h2>
+            <p id="wapStatus"></p>
+        </div>
+    </body>
+</html>
