@@ -1,0 +1,3 @@
+[submodule "wappalyzer-api"]
+	path = wappalyzer-api
+	url = git@github.com:Ferlony/wappalyzer-api.git
