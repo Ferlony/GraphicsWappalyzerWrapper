@@ -12,7 +12,7 @@ services:
   lab_app:
     image: lab_app
     environment:
-      - wapHost=192.168.1.43 
+      - wapHost=192.168.0.101 
     build: 
       context: ./src/
       dockerfile: Dockerfile
